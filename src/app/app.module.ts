@@ -1,3 +1,5 @@
+import { NotesModule } from './notes/notes.module';
+import { NotesConfig } from './notes/notes.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -95,8 +97,10 @@ import { TestComponent } from './components/my-stuff/test/test.component';
           }
         }
       } as ApiConfig),
-      Object.assign(CBSConfig)
+      Object.assign(CBSConfig),
+      Object.assign(NotesConfig)
     ),
+    NotesModule,
     TripPinModule,
     NorthwindModule,
     North2Module,
