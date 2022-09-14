@@ -12,6 +12,8 @@ import {
 })
 export class TestComponent implements OnInit {
 
+  private lastEtag : string | undefined = "";
+
   constructor(private peopleService: PeopleService) {
   }
 
@@ -34,16 +36,24 @@ export class TestComponent implements OnInit {
         FirstName: 'Some',
         LastName: 'User',
       }
-    ).subscribe(() => console.log('done'));
+    )
+    .pipe(
+      map(( { entity, annots } ) => {
+        this.lastEtag = annots.etag
+      })
+    )
+    .subscribe(() => console.log('addPerson: done - etag:' + this.lastEtag));
   }
 
-  modifyPerson()
+  modifyLastCreatedPerson()
   {
-    this.peopleService.modify('someuser', { LastName: 'LastName' })
+    let etag = this.lastEtag;
+
+    this.peopleService.modify('someuser', { LastName: 'Updated' }, { etag })
     .pipe(
       map(({ entity, annots }) => {
         return entity;
       }))
-    .subscribe(() => console.log('done'));
+    .subscribe(() => console.log('modifyLastCreatedPerson: done'));
   }
 }
