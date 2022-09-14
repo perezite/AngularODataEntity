@@ -21,6 +21,7 @@ import { ArticlesComponent } from './components/cbs';
 import { OrdersComponent } from './components/northwind/orders.component';
 import { EmployeesComponent } from './components/northwind/employees.component';
 import { TestComponent } from './components/my-stuff/test/test.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TestComponent } from './components/my-stuff/test/test.component';
     ProductsComponent,
     OrdersComponent,
     EmployeesComponent,
-    TestComponent
+    TestComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
