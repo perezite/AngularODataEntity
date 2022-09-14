@@ -1,3 +1,4 @@
+import { NotesService } from './../../notes/Default/notes.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-
-  constructor() { }
+  constructor(private notesService: NotesService) { }
 
   ngOnInit(): void {
+    console.clear();
   }
 
+  fetchNotes() {
+    console.clear();
+    this.notesService.entities().fetchAll().subscribe(x => console.log(x));
+  }
 }

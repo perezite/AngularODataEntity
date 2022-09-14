@@ -11,7 +11,7 @@ import { DefaultSchema } from './Default/default.schema';
 
 //#region ODataApiGen ApiConfig
 export const NotesConfig = {
-  serviceRootUrl: 'http://host.docker.internal:8000/v1/',
+  serviceRootUrl: 'http://localhost:8000/v1/',
   name: 'Notes',
   version: '4.0',
   creation: new Date('2022-09-14T15:46:49.2529396+00:00'),
