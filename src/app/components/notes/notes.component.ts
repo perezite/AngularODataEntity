@@ -14,6 +14,7 @@ export class NotesComponent implements OnInit {
 
   ngOnInit(): void {
     console.clear();
+    this.fetchNotes();
   }
 
   fetchNotes() {
@@ -28,9 +29,11 @@ export class NotesComponent implements OnInit {
     let message = this.randomString(20);
     this.notesService.modify(id, { MessageNote: message })
       .subscribe(_ => console.log('Update done!'));
+
+    this.fetchNotes();
   }
 
-  randomString(length: number) {
+  private randomString(length: number) {
     let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
     for ( var i = 0; i < length; i++ ) {
