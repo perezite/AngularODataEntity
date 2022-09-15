@@ -25,12 +25,27 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  updateNote(id: string) {
+  modifyNote(id: string) {
     let message = this.randomString(20);
     this.notesService.modify(id, { MessageNote: message })
-      .subscribe(_ => console.log('Update done!'));
+      .subscribe(_ => {
+         console.log('Modify done!');
+         this.fetchNotes();
+    });
+  }
 
-    this.fetchNotes();
+  updateNote(id: string)
+  {
+    let updatedNote = this.notes.find(x => x.Id == id);
+    if (updatedNote)
+    {
+      updatedNote.MessageNote = this.randomString(20);
+      this.notesService.update(id, updatedNote)
+        .subscribe(_ => {
+          console.log('Updated Done');
+          this.fetchNotes();
+      });
+    }
   }
 
   private randomString(length: number) {
